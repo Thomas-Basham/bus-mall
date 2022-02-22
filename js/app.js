@@ -2,8 +2,8 @@
 
 // console.log('oh, hello');
 
-// total rounds the user will be allowed to vote
-let roundsAllowed = 25;
+// total rounds the user will be allowed to vote. Needs to be 25. changed to 5 for testing purposes
+let roundsAllowed = 55;
 
 
 // empty array to push product obejcts to
@@ -56,6 +56,7 @@ function getRandomProduct() {
   return Math.floor(Math.random()* allProducts.length);
 }
 
+
 // render images
 function renderImgs(){
   let randomProduct1 = getRandomProduct();
@@ -70,6 +71,12 @@ function renderImgs(){
     randomProduct2 = getRandomProduct();
   }
 
+  while(randomProduct1 === randomProduct3){
+    randomProduct3 = getRandomProduct();
+  }
+  while(randomProduct2 === randomProduct3){
+    randomProduct2 = getRandomProduct();
+  }
 
   // while(randomProduct2 === randomProduct1 || randomProduct3){
   //   randomProduct3 = getRandomProduct();
