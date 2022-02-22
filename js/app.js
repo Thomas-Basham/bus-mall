@@ -49,7 +49,6 @@ new Product('unicorn');
 new Product('water-can');
 new Product('wine-glass');
 
-console.log(allProducts);
 
 
 // function gets a random product
@@ -67,9 +66,10 @@ function renderImgs(){
   // NOTE: Your lab will require you to have 3 unique images per round
   // HINT: Consider using a container to store your random indexes and then validate if there are 3 unique numbers in that container
 
-  while(randomProduct1 === randomProduct2 || randomProduct3){
+  while(randomProduct1 === randomProduct2){
     randomProduct2 = getRandomProduct();
   }
+
 
   // while(randomProduct2 === randomProduct1 || randomProduct3){
   //   randomProduct3 = getRandomProduct();
@@ -89,6 +89,54 @@ function renderImgs(){
 }
 
 renderImgs();
+console.log(allProducts);
+
+console.log(roundsAllowed);
+
+
+function handleClick(event){
+  roundsAllowed--;
+
+  let imgClicked = event.target.alt;
+
+  for(let i = 0; i < allProducts.length; i++){
+    if(imgClicked === allProducts[i].name){
+      allProducts[i].clicks++;
+    }
+  }
+
+
+  // rerender 3 new prduct images
+  renderImgs();
+
+  // once voting rounds completed -  stop clicks
+  if(roundsAllowed === 0){
+    imgContainer.removeEventListener('click', handleClick);
+  }
+}
+
+function handleShowResults(event){  //eslint-disable-line
+  // if no more votes - then render a list
+
+  if(roundsAllowed>0){
+    alert('Please complete 25 rounds of voting, then click the Show Results button to see your results');
+  }
+
+  if(roundsAllowed === 0){
+    for(let i = 0; i < allProducts.length; i++){
+      let li = document.createElement('li');
+      li.textContent = `${allProducts[i].name} was viewed ${allProducts[i].views} times, and was voted for ${allProducts[i].clicks} times.`;
+      showResults.appendChild(li);
+    }
+  }
+}
+
+
+// what event we listen to
+
+imgContainer.addEventListener('click', handleClick);
+
+resultsBtn.addEventListener('click', handleShowResults);
 
 
 
