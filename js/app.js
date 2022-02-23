@@ -63,10 +63,11 @@ function getRandomProduct() {
 
 let randomProducts = [];
 // hint for 2 unique rounds: 6 numbers for 2 unique rounds.
-
+let randomProducts2 = [];
 
 // render images
 function renderImgs(){
+
   while(randomProducts.length < 3){
     let randoNum = getRandomProduct();
     while(!randomProducts.includes(randoNum)){
@@ -91,7 +92,44 @@ function renderImgs(){
   imgTre.alt = allProducts[randomProduct3].name;
   allProducts[randomProduct3].views++;
 }
+
 renderImgs();
+
+
+// My attempt to render a new set of images
+function renderNewImages(){
+
+  while(randomProducts2.length < 3){
+    let randoNum = getRandomProduct();
+    while(!randomProducts2.includes(randoNum)){
+      randomProducts.push(randoNum);
+    }
+  }
+
+
+  let randomProduct4 = randomProducts2.pop();
+  let randomProduct5 = randomProducts2.pop();
+  let randomProduct6 = randomProducts2.pop();
+
+  imgOne.src = allProducts[randomProduct4].src;
+  imgOne.alt = allProducts[randomProduct4].name;
+  allProducts[randomProduct4].views++;
+
+  imgTwo.src = allProducts[randomProduct5].src;
+  imgTwo.alt = allProducts[randomProduct5].name;
+  allProducts[randomProduct5].views++;
+
+  imgTre.src = allProducts[randomProduct6].src;
+  imgTre.alt = allProducts[randomProduct6].name;
+  allProducts[randomProduct6].views++;
+
+  while(!randomProducts.includes(randomProducts2)){
+    randomProducts.splice(0, 3, randomProduct4, randomProduct5, randomProduct6);
+  }
+}
+
+
+
 
 console.log(allProducts);
 
@@ -106,17 +144,17 @@ function renderChartTitle(){
 }
 renderChartTitle();
 
-
 let h4 = document.createElement('h4');
+
 
 function handleClick(event){
   let imgClicked = event.target.alt;
   roundsAllowed--;
 
-  h4.textContent = `After ${roundsAllowed} votes`;
+  h4.textContent = `After ${roundsAllowed} votes`; // changes chart heading as rounds is decrimented
   chartHeader.appendChild(h4);
-  // while(roundsAllowed > 0){
-  // }
+
+
   for(let i = 0; i < allProducts.length; i++){
     if(imgClicked === allProducts[i].name){
       allProducts[i].clicks++;
@@ -125,6 +163,7 @@ function handleClick(event){
 
   // rerender 3 new prduct images
   renderImgs();
+  // renderNewImages();
 
   // once voting rounds completed -  stop clicks
   if(roundsAllowed === 0){
