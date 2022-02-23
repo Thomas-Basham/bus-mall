@@ -149,36 +149,40 @@ function renderChart(){
     productClicks.push(allProducts[i].clicks);
     productViews.push(allProducts[i].views);
   }
+  console.log(productNames);
 
 
   let chartObject = { //eslint-disable-line
     type: 'bar',
     data: {
       labels: productNames,
-      datasets: [{
-        label: '# of Votes',
-        data: productClicks,
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-        ],
-        borderWidth: 1,
-        hoverBorderColor: 'black'
-      },
-      {
-        label: '# of Views',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(54, 162, 235, 0.2)',
-        ],
-        borderColor: [
-          'rgba(54, 162, 235, 1)',
-        ],
-        borderWidth: 1,
-        hoverBorderColor: 'black'
-      }]
+      datasets: [
+        {
+          label: '# of Views',
+          data: productViews,
+          backgroundColor: [
+            'green'
+          ],
+          borderColor: [
+            'yellow'
+          ],
+          borderWidth: 1,
+          hoverBorderColor: 'clear',
+          hoverBackgroundColor: 'purple'
+        },
+        {
+          label: '# of Votes',
+          data: productClicks,
+          backgroundColor: [
+            'yellow'
+          ],
+          borderColor: [
+            'green'
+          ],
+          borderWidth: 1,
+          hoverBorderColor: 'clear',
+          hoverBackgroundColor: 'purple'
+        }]
     },
     options: {
       scales: {
@@ -190,7 +194,7 @@ function renderChart(){
   };
 
 
-  const myChart = new Chart(ctx, chartObject);
+  const myChart = new Chart(ctx, chartObject); //eslint-disable-line
 }
 
 // what event we listen to

@@ -21,6 +21,10 @@ h1 {
   grid-row: 2/4;
   flex-direction: column;
   padding: 20px;
+  position: relative; 
+  height:auto; 
+  width:40vw
+  
 }
 
 #show-results-btn {
@@ -53,4 +57,9 @@ h1 {
 #footer {
   grid-column: 1/-1;
   display: flex;
+}
+
+#myChart{
+  display: flex;
+
 }
