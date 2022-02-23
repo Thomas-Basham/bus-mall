@@ -17,6 +17,7 @@ let imgTre = document.getElementById('img-tre');
 // console.log(imgOne);
 // let resultsBtn = document.getElementById('show-results-btn');
 // let showResults = document.getElementById('display-results-list');
+let chartHeader = document.getElementById('chart-header');
 let ctx = document.getElementById('myChart').getContext('2d');
 
 
@@ -96,18 +97,31 @@ console.log(allProducts);
 
 console.log(roundsAllowed);
 
+function renderChartTitle(){
+
+  let h1 = document.createElement('h1');
+  h1.textContent = 'Results Displayed Here';
+  chartHeader.appendChild(h1);
+
+}
+renderChartTitle();
+
+
+let h4 = document.createElement('h4');
 
 function handleClick(event){
+  let imgClicked = event.target.alt;
   roundsAllowed--;
 
-  let imgClicked = event.target.alt;
-
+  h4.textContent = `After ${roundsAllowed} votes`;
+  chartHeader.appendChild(h4);
+  // while(roundsAllowed > 0){
+  // }
   for(let i = 0; i < allProducts.length; i++){
     if(imgClicked === allProducts[i].name){
       allProducts[i].clicks++;
     }
   }
-
 
   // rerender 3 new prduct images
   renderImgs();
@@ -116,8 +130,12 @@ function handleClick(event){
   if(roundsAllowed === 0){
     imgContainer.removeEventListener('click', handleClick);
     renderChart();
+    while (chartHeader.firstChild) {
+      chartHeader.removeChild(chartHeader.firstChild);
+    }
   }
 }
+
 
 // function handleShowResults(event){  //eslint-disable-line
 //   // if no more votes - then render a list
@@ -134,7 +152,6 @@ function handleClick(event){
 //     }
 //   }
 // }
-
 
 
 function renderChart(){
@@ -203,6 +220,8 @@ function renderChart(){
 imgContainer.addEventListener('click', handleClick);
 
 // resultsBtn.addEventListener('click', handleShowResults);
+
+
 
 
 
