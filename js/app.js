@@ -22,6 +22,21 @@ let ctx = document.getElementById('myChart').getContext('2d');
 
 
 
+// **** LOCAL STORAGE CONTINUED ****
+
+// Step 3: Get it out of local storage
+let retrievedProducts = localStorage.getItem('products');
+
+console.log('retreived prodcuts', retrievedProducts);
+
+// // Step 4: Parse our data for our code to read  products
+
+let parsedProducts = JSON.parse(retrievedProducts);
+
+// let retrievedproducts = JSON.parse(localStorage.getItem('products')); // <--- one liner
+
+console.log('parsed products', parsedProducts);
+
 // constructor function for new product info pushing to allProducts[]
 function Product(name, fileExtension = 'jpg'){
   this.name = name;
@@ -33,27 +48,30 @@ function Product(name, fileExtension = 'jpg'){
 
 }
 // products: 19 total
-new Product('bag');
-new Product('banana');
-new Product('bathroom');
-new Product('boots');
-new Product('breakfast');
-new Product('bubblegum');
-new Product('chair');
-new Product('cthulhu');
-new Product('dog-duck');
-new Product('dragon');
-new Product('pen');
-new Product('pet-sweep');
-new Product('scissors');
-new Product('shark');
-new Product('sweep', 'png');
-new Product('tauntaun');
-new Product('unicorn');
-new Product('water-can');
-new Product('wine-glass');
 
-
+if (retrievedProducts) {
+  allProducts = parsedProducts;
+} else {
+  new Product('bag');
+  new Product('banana');
+  new Product('bathroom');
+  new Product('boots');
+  new Product('breakfast');
+  new Product('bubblegum');
+  new Product('chair');
+  new Product('cthulhu');
+  new Product('dog-duck');
+  new Product('dragon');
+  new Product('pen');
+  new Product('pet-sweep');
+  new Product('scissors');
+  new Product('shark');
+  new Product('sweep', 'png');
+  new Product('tauntaun');
+  new Product('unicorn');
+  new Product('water-can');
+  new Product('wine-glass');
+}
 
 
 // function gets a random product
@@ -131,9 +149,9 @@ renderImgs();
 
 
 
-console.log(allProducts);
+// console.log(allProducts);
 
-console.log(roundsAllowed);
+// console.log(roundsAllowed);
 
 function renderChartTitle(){
 
@@ -172,6 +190,15 @@ function handleClick(event){
     while (chartHeader.firstChild) {
       chartHeader.removeChild(chartHeader.firstChild);
     }
+    // ********* LOCAL STORAGE BEGINS ***********
+
+    // Step 1: Stringify our data
+    let stringifiedProducts = JSON.stringify(allProducts);
+    console.log('Stringified Products', stringifiedProducts);
+
+    // Step 2: Set the item into Local Storage
+    localStorage.setItem('products', stringifiedProducts);
+
   }
 }
 

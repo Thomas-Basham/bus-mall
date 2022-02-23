@@ -21,3 +21,25 @@ Create an app that takes in 3 random images from a product catalogue for a user 
 ### Lab 12
 
     In lab 12 we took our first dive into 3rd party libraries and used the chartjs plugin to create a chart. We replaced the list that had our data rendered into it with a fancy chart, and used the same data. The chartjs website was helpful at explaining how to use their plugin and I'm really excited to see what other plugins are out there. Another thing I replaced from the last lab was the button. Instead I had the chart appear once the roundsAllowed var went to 0. One last thing that I added was a header that displays while there are still rounds of voting left and counts down with each vote, then dissapears when there are no rounds left. This might be a bit extra but I feel like it made the app more ux friendly. 
+
+### Lab 13
+
+Some notes on Local Storage from demo
+
+  // ********* LOCAL STORAGE BEGINS ***********
+
+    // Step 1: Stringify our data
+
+     // Step 2: Set the item into Local Storage
+
+
+     // **** LOCAL STORAGE CONTINUED ****
+
+     // Step 3: Get it out of local storage
+    
+     // Step 4: Parse our data for our code to read
+
+
+     // ******* LOCAL STORAGE CONTINUED PT 2 *********
+
+     // Step 5: Use the data that came out of localStorage
