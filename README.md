@@ -12,6 +12,8 @@ Create an app that takes in 3 random images from a product catalogue for a user 
 
 [Chartjs](https://www.chartjs.org/)
 
+[Article on local storage](http://diveinto.html5doctor.com/storage.html)
+
 ### Reflections and Comments
 
 ### Lab 11
@@ -23,6 +25,8 @@ Create an app that takes in 3 random images from a product catalogue for a user 
     In lab 12 we took our first dive into 3rd party libraries and used the chartjs plugin to create a chart. We replaced the list that had our data rendered into it with a fancy chart, and used the same data. The chartjs website was helpful at explaining how to use their plugin and I'm really excited to see what other plugins are out there. Another thing I replaced from the last lab was the button. Instead I had the chart appear once the roundsAllowed var went to 0. One last thing that I added was a header that displays while there are still rounds of voting left and counts down with each vote, then dissapears when there are no rounds left. This might be a bit extra but I feel like it made the app more ux friendly. 
 
 ### Lab 13
+    This lab we wrote the code to store the data from the users 'votes' and 'views' per product. I think this is one of the most boring parts of the project but definitely useful. We used JSON to strinify our data and then put the data into the users local storage. It was fulfilling to see that all of this hard work will be stored on someones machine somewhere. 
+
 
 Some notes on Local Storage from demo
 
