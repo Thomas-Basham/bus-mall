@@ -50,7 +50,7 @@ function Product(name, fileExtension = 'jpg'){
 
 }
 
-
+// Step 5: Use the data that came out of localStorage
 // new Product objects 19 total
 if (retrievedProducts) { // retrievedProducts = localStorage.getItem('products')
   allProducts = parsedProducts; // allProducts = []
